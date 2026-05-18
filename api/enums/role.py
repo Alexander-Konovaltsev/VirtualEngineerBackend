@@ -5,4 +5,5 @@ class RoleName(Enum):
     TEACHER = "Преподаватель",
     EMPLOYEE = "Сотрудник"
     UNDEFINED = "Прочее"
+    ADMIN = "Админ"
     

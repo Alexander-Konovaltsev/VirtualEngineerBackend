@@ -20,6 +20,7 @@ class DBInitializer:
         try:
             self.init_roles()
             self.init_test_user()
+            self.init_admin_user()
             self.init_scenes()
             self.init_models()
             self.init_scenes_models()
@@ -36,7 +37,8 @@ class DBInitializer:
             Role(name=RoleName.STUDENT.value),
             Role(name=RoleName.TEACHER.value),
             Role(name=RoleName.EMPLOYEE.value),
-            Role(name=RoleName.UNDEFINED.value)
+            Role(name=RoleName.UNDEFINED.value),
+            Role(name=RoleName.ADMIN.value)
         ]
 
         for role in roles:
@@ -63,6 +65,25 @@ class DBInitializer:
         )
 
         self.db.add(test_user)
+        self.db.commit()
+
+    def init_admin_user(self):
+        email = "admin@test.ru"
+
+        if get_user_by_email(self.db, email):
+            return
+        
+        admin_user = User(
+            last_name="Админов",
+            first_name="Админ",
+            patronymic="Админович",
+            email=email,
+            password=SecurityService.hash_password("1234"),
+            role_id=5,
+            workplace="Тестовый университет"
+        )
+
+        self.db.add(admin_user)
         self.db.commit()
 
     def init_scenes(self):

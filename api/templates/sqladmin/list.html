@@ -1,6 +1,6 @@
 {% extends "sqladmin/layout.html" %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 16px;">
   <div class="row">
     <div class="col-12">
       <div class="d-flex">
@@ -144,7 +144,7 @@
                       {% endif %}
                       {% if model_view.check_can_edit(request, row) %}
                       <a href="{{ model_view._build_url_for('admin:edit', request, row) }}" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Изменить">
+                        data-bs-placement="top" title="Редактировать">
                         <span class="me-1"><i class="fa-solid fa-pen-to-square"></i></span>
                       </a>
                       {% endif %}
@@ -214,7 +214,7 @@
                     {% else %}
                     <a class="page-link" href="#">
                       {% endif %}
-                      Вперёд
+                      Вперед
                       <i class="fa-solid fa-chevron-right"></i>
                     </a>
                 </li>

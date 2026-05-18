@@ -24,8 +24,9 @@ services:
       - POSTGRES_DB
       - DB_HOST
       - DB_PORT
-      - SECRET_KEY
+      - JWT_SECRET_KEY
       - ACCESS_TOKEN_EXPIRE_MINUTES
+      - SESSION_SECRET_KEY
     volumes:
       - ./api:/app
 

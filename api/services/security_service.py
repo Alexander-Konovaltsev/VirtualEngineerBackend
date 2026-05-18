@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 class SecurityService:
     __ALGORITHM = "HS256"
-    __SECRET_KEY = os.getenv("SECRET_KEY")
+    __SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     __ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
     @staticmethod

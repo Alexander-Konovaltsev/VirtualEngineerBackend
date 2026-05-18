@@ -8,6 +8,9 @@ from fastapi import HTTPException
 def get_user_by_email(db: Session, email: str):
     return db.query(User).filter(User.email == email).first()
 
+def get_user_by_id(db: Session, id: int):
+    return db.query(User).filter(User.id == id).first()
+
 def create_user(db: Session, user_data: UserCreateRequest):
     try:
         hashed_password = SecurityService.hash_password(user_data.password)
