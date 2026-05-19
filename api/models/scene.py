@@ -8,3 +8,6 @@ class Scene(Base):
     name = Column(String(50), nullable=False)
     title = Column(String(100), nullable=False)
     description = Column(Text, nullable=False)
+
+    def __str__(self):
+        return self.title

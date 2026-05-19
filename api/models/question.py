@@ -16,3 +16,5 @@ class Question(Base):
     model = relationship("Model", backref="questions")
     question_type = relationship("QuestionType", backref="questions")
     
+    def __str__(self):
+        return self.question_text
