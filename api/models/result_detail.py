@@ -18,4 +18,7 @@ class ResultDetail(Base):
     result = relationship("Result", backref="results_details")
     question = relationship("Question", backref="results_details")
     answer = relationship("Answer", backref="results_details")
+
+    def __str__(self):
+        return f"{self.id}"
     

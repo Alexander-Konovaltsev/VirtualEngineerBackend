@@ -11,7 +11,7 @@ class User(Base):
     first_name = Column(String(50), nullable=False)
     patronymic = Column(String(50), nullable=True)
     email = Column(String(50), unique=True, nullable=False, index=True)
-    password = Column(String(255), nullable=False)
+    password = Column(String(255), nullable=True)
     role_id = Column(Integer, ForeignKey("roles.id"), nullable=False)
     workplace = Column(String(255), nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)

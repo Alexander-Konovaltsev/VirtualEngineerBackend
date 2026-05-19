@@ -17,3 +17,6 @@ class Result(Base):
 
     user = relationship("User", backref="results")
     quiz = relationship("Quiz", backref="results")
+
+    def __str__(self):
+        return f"{self.id}"

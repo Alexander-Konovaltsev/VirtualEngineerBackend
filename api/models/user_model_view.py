@@ -20,3 +20,6 @@ class UserModelView(Base):
     __table_args__ = (
         UniqueConstraint("user_id", "scene_id", "model_id", name="uq_user_scene_models"),
     )
+
+    def __str__(self):
+        return f"{self.id}"
