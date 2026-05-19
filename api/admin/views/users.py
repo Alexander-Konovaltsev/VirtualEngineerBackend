@@ -78,7 +78,6 @@ class UserAdmin(ModelView, model=User):
         User.workplace,
         User.created_at,
         "results",
-        "results_details",
         "models_views"
     ]
 
