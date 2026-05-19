@@ -15,3 +15,6 @@ class Quiz(Base):
     scene_id = Column(Integer, ForeignKey("scenes.id"), nullable=False)
 
     scene = relationship("Scene", backref="quizzes")
+
+    def __str__(self):
+        return self.title

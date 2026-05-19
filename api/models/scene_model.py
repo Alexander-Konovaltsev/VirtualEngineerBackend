@@ -11,4 +11,7 @@ class SceneModel(Base):
     
     scene = relationship("Scene", backref="scenes_models")
     model = relationship("Model", backref="scenes_models")
+
+    def __str__(self):
+        return f"{self.id}"
     

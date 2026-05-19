@@ -4,6 +4,7 @@ from sqladmin import Admin
 from db.session import engine
 from admin.views.users import UserAdmin
 from admin.views.roles import RoleAdmin
+from admin.views.scenes import SceneAdmin
 from admin.auth import AdminAuth
 
 def setup_admin(app: FastAPI):
@@ -21,3 +22,4 @@ def setup_admin(app: FastAPI):
 
     admin.add_view(UserAdmin)
     admin.add_view(RoleAdmin)
+    admin.add_view(SceneAdmin)
