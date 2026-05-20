@@ -25,7 +25,7 @@ class ModelAdmin(ModelView, model=Model):
         Model.parent: "Родитель",
         Model.description: "Описание",
         "children": "Дочерние",
-        "scenes_models": "Модели на сцене"
+        "scenes_models": "Модель на сценах"
         
     }
 

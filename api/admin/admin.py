@@ -11,6 +11,7 @@ from admin.views.answers import AnswerAdmin
 from admin.views.questions import QuestionAdmin
 from admin.views.models import ModelAdmin
 from admin.views.questions_types import QuestionTypeAdmin
+from admin.views.scenes_models import SceneModelAdmin
 from admin.auth import AdminAuth
 
 def setup_admin(app: FastAPI):
@@ -35,3 +36,4 @@ def setup_admin(app: FastAPI):
     admin.add_view(QuestionAdmin)
     admin.add_view(ModelAdmin)
     admin.add_view(QuestionTypeAdmin)
+    admin.add_view(SceneModelAdmin)
