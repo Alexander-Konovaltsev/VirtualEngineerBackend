@@ -8,6 +8,7 @@ from admin.views.scenes import SceneAdmin
 from admin.views.results import Resultdmin
 from admin.views.quizzes import QuizAdmin
 from admin.views.answers import AnswerAdmin
+from admin.views.questions import QuestionAdmin
 from admin.auth import AdminAuth
 
 def setup_admin(app: FastAPI):
@@ -29,3 +30,4 @@ def setup_admin(app: FastAPI):
     admin.add_view(Resultdmin)
     admin.add_view(QuizAdmin)
     admin.add_view(AnswerAdmin)
+    admin.add_view(QuestionAdmin)

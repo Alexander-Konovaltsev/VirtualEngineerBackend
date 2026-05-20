@@ -13,3 +13,6 @@ class Answer(Base):
     question_id = Column(Integer, ForeignKey("questions.id"), nullable=False)
 
     question = relationship("Question", backref="answers")
+
+    def __str__(self):
+        return self.text
