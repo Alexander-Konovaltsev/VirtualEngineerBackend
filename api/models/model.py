@@ -17,3 +17,6 @@ class Model(Base):
     parent_id = Column(Integer, ForeignKey("models.id"), nullable=True)
 
     parent = relationship("Model", remote_side=[id], backref="children")
+
+    def __str__(self):
+        return self.title
