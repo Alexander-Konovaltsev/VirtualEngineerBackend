@@ -9,6 +9,7 @@ class ResultDetailAdmin(ModelView, model=ResultDetail):
 
     column_list = [
         ResultDetail.id,
+        ResultDetail.created_at,
         ResultDetail.user,
         ResultDetail.result,
         ResultDetail.question,
@@ -44,6 +45,13 @@ class ResultDetailAdmin(ModelView, model=ResultDetail):
     ]
 
     column_formatters_detail = {
+        ResultDetail.created_at: lambda m, a: (
+            m.created_at.strftime("%d.%m.%Y %H:%M:%S")
+            if m.created_at else ""
+        )
+    }
+
+    column_formatters = {
         ResultDetail.created_at: lambda m, a: (
             m.created_at.strftime("%d.%m.%Y %H:%M:%S")
             if m.created_at else ""
