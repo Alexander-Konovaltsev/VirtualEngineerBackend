@@ -1,6 +1,6 @@
 from sqladmin import ModelView
-from models.quiz import Quiz
-from models.scene import Scene
+from models.vr.quiz import Quiz
+from models.vr.scene import Scene
 from sqlalchemy import or_
 
 class QuizAdmin(ModelView, model=Quiz):

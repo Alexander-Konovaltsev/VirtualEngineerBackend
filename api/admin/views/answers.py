@@ -1,6 +1,6 @@
 from sqladmin import ModelView
-from models.answer import Answer
-from models.question import Question
+from models.vr.answer import Answer
+from models.vr.question import Question
 from sqlalchemy import or_
 
 class AnswerAdmin(ModelView, model=Answer):

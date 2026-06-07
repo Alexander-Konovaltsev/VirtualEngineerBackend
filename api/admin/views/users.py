@@ -1,10 +1,10 @@
 from sqladmin import ModelView
-from models.user import User
+from models.vr.user import User
 from wtforms import PasswordField
 from wtforms.validators import Email
 from services.security_service import SecurityService
-from db.session import SessionLocal
-from crud.user import get_user_by_email
+from db.session import VRSessionLocal
+from crud.vr.user import get_user_by_email
 
 class UserAdmin(ModelView, model=User):
     name = "пользователя"
@@ -92,7 +92,7 @@ class UserAdmin(ModelView, model=User):
         password = data.get("password", "").strip()
         email = data.get("email", "").strip()
 
-        db = SessionLocal()
+        db = VRSessionLocal()
 
         try:
             user = get_user_by_email(db, email)

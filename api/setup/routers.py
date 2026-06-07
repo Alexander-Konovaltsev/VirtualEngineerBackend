@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-
-from routers import (
+from routers.vr import (
     roles,
     users,
     scenes,
@@ -11,6 +10,7 @@ from routers import (
     questions,
     results_details
 )
+from routers.optimizer import library
 
 def setup_routers(app):
     api_router = APIRouter(prefix="/api")
@@ -24,5 +24,6 @@ def setup_routers(app):
     api_router.include_router(results.router)
     api_router.include_router(questions.router)
     api_router.include_router(results_details.router)
+    api_router.include_router(library.router)
 
     app.include_router(api_router)

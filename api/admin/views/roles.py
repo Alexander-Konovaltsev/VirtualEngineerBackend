@@ -1,5 +1,5 @@
 from sqladmin import ModelView
-from models.role import Role
+from models.vr.role import Role
 
 class RoleAdmin(ModelView, model=Role):
     name = "роль"

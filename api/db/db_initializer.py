@@ -1,22 +1,26 @@
-from db.session import SessionLocal
-from models.role import Role
-from models.user import User
-from models.scene import Scene
-from models.model import Model
-from models.scene_model import SceneModel
-from models.quiz import Quiz
-from models.question_type import QuestionType
-from models.question import Question
-from models.answer import Answer
+from db.session import VRSessionLocal
+from db.session import OptimizerSessionLocal
+from models.vr.role import Role
+from models.vr.user import User
+from models.vr.scene import Scene
+from models.vr.model import Model
+from models.vr.scene_model import SceneModel
+from models.vr.quiz import Quiz
+from models.vr.question_type import QuestionType
+from models.vr.question import Question
+from models.vr.answer import Answer
+from models.optimizer.low_poly_model import LowPolyModel
 from enums.role import RoleName
 from enums.scene import SceneName, SceneTitle, SceneDescription
 from enums.model import ModelName, ModelTitle, ModelDescription
-from crud.user import get_user_by_email
+from crud.vr.user import get_user_by_email
 from services.security_service import SecurityService
 
 class DBInitializer:
     def __init__(self):
-        self.db = SessionLocal()
+        self.db = VRSessionLocal()
+        self.optimizer_db = OptimizerSessionLocal()
+
         try:
             self.init_roles()
             self.init_test_user()
@@ -29,8 +33,10 @@ class DBInitializer:
             self.init_questions_types()
             self.init_questions()
             self.init_answers()
+            self.init_low_poly_models()
         finally:
             self.db.close()
+            self.optimizer_db.close()
 
     def init_roles(self):
         roles = [
@@ -366,3 +372,22 @@ class DBInitializer:
                 self.db.add(answer)
         
         self.db.commit()
+
+    def init_low_poly_models(self):
+        low_poly_models = [
+            LowPolyModel(
+                title="Болт",
+                filename="bolt.blend",
+                poly_count=200,
+                l_max=150,
+                l_mid=100,
+                l_min=80
+            )
+        ]
+
+        for low_poly_model in low_poly_models:
+            exists = self.optimizer_db.query(LowPolyModel).filter(LowPolyModel.title == low_poly_model.title).first()
+            if not exists:
+                self.optimizer_db.add(low_poly_model)
+    
+        self.optimizer_db.commit()

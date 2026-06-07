@@ -1,5 +1,5 @@
 from sqladmin import ModelView
-from models.question_type import QuestionType
+from models.vr.question_type import QuestionType
 
 class QuestionTypeAdmin(ModelView, model=QuestionType):
     name = "тип вопроса"

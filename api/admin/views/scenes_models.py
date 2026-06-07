@@ -1,8 +1,8 @@
 from sqladmin import ModelView
 from sqlalchemy import or_
-from models.scene_model import SceneModel
-from models.scene import Scene
-from models.model import Model
+from models.vr.scene_model import SceneModel
+from models.vr.scene import Scene
+from models.vr.model import Model
 
 class SceneModelAdmin(ModelView, model=SceneModel):
     name = "модель на сцене"

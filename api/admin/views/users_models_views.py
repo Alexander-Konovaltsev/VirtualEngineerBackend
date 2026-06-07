@@ -1,7 +1,7 @@
 from sqladmin import ModelView
 from sqlalchemy import or_
-from models.user_model_view import UserModelView
-from models.user import User
+from models.vr.user_model_view import UserModelView
+from models.vr.user import User
 
 class UserModelViewAdmin(ModelView, model=UserModelView):
     name = "лог изучения модели"

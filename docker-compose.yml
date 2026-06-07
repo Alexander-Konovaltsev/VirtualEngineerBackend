@@ -11,6 +11,7 @@ services:
       - POSTGRES_DB
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./api/db/sql/01-create-optimizer-db.sql:/docker-entrypoint-initdb.d/01-create-optimizer-db.sql
 
   api:
     build: ./api
@@ -22,6 +23,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+      - OPTIMIZER_DB
       - DB_HOST
       - DB_PORT
       - JWT_SECRET_KEY

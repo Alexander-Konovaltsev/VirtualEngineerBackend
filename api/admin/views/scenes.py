@@ -1,5 +1,5 @@
 from sqladmin import ModelView
-from models.scene import Scene
+from models.vr.scene import Scene
 
 class SceneAdmin(ModelView, model=Scene):
     name = "сцену"

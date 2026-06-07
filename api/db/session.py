@@ -4,18 +4,32 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 DB_USER = os.getenv("POSTGRES_USER")
 DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
-DB_NAME = os.getenv("POSTGRES_DB")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 
-DSN = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+VR_DB_NAME = os.getenv("POSTGRES_DB")
+OPTIMIZER_DB_NAME = os.getenv("OPTIMIZER_DB")
 
-engine = create_engine(DSN)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+VR_DSN = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{VR_DB_NAME}"
+OPTIMIZER_DSN = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{OPTIMIZER_DB_NAME}"
 
-def get_db():
-    db = SessionLocal()
+vr_engine = create_engine(VR_DSN)
+VRSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=vr_engine)
+VRBase = declarative_base()
+
+optimizer_engine = create_engine(OPTIMIZER_DSN)
+OptimizerSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=optimizer_engine)
+OptimizerBase = declarative_base()
+
+def get_vr_db():
+    db = VRSessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def get_optimizer_db():
+    db = OptimizerSessionLocal()
     try:
         yield db
     finally:

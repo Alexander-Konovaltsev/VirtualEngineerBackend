@@ -1,8 +1,8 @@
 from sqladmin import ModelView
 from sqlalchemy import or_
-from models.result import Result
-from models.user import User
-from models.quiz import Quiz
+from models.vr.result import Result
+from models.vr.user import User
+from models.vr.quiz import Quiz
 
 class Resultdmin(ModelView, model=Result):
     name = "результат"

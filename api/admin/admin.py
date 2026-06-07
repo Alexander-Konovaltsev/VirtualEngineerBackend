@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from sqladmin import Admin
-from db.session import engine
+from db.session import vr_engine
 from admin.views.users import UserAdmin
 from admin.views.roles import RoleAdmin
 from admin.views.scenes import SceneAdmin
@@ -23,7 +23,7 @@ def setup_admin(app: FastAPI):
 
     admin = Admin(
         app, 
-        engine,
+        vr_engine,
         title="Виртуальный 3D-инженер",
         templates_dir="templates",
         authentication_backend=authentication_backend

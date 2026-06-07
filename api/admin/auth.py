@@ -1,8 +1,8 @@
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from pydantic import EmailStr
-from db.session import SessionLocal
-from crud.user import get_user_by_email, get_user_by_id
+from db.session import VRSessionLocal
+from crud.vr.user import get_user_by_email, get_user_by_id
 from services.security_service import SecurityService
 from enums.role import RoleName
 
@@ -43,7 +43,7 @@ class AdminAuth(AuthenticationBackend):
             }
             return False
 
-        db = SessionLocal()
+        db = VRSessionLocal()
 
         try:
             admin = get_user_by_email(db, email)
@@ -79,7 +79,7 @@ class AdminAuth(AuthenticationBackend):
         if not admin_id:
             return False
 
-        db = SessionLocal()
+        db = VRSessionLocal()
 
         try:
             admin = get_user_by_id(db, admin_id)

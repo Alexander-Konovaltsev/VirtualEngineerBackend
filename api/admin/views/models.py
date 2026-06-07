@@ -1,5 +1,5 @@
 from sqladmin import ModelView
-from models.model import Model
+from models.vr.model import Model
 
 class ModelAdmin(ModelView, model=Model):
     name = "модель"
