@@ -376,12 +376,20 @@ class DBInitializer:
     def init_low_poly_models(self):
         low_poly_models = [
             LowPolyModel(
-                title="Болт",
+                title="Болт М23×60",
                 filename="bolt.blend",
-                poly_count=200,
-                l_max=150,
-                l_mid=100,
-                l_min=80
+                poly_count=34,
+                l_max=0.057,
+                l_mid=0.0234,
+                l_min=0.0221
+            ),
+            LowPolyModel(
+                title="Антенна",
+                filename="antenna.blend",
+                poly_count=276,
+                l_max=10,
+                l_mid=0.258,
+                l_min=0.0221
             )
         ]
 
